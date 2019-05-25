@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class TagsController < ApplicationController
+  # Protect delete tags action from unauthenticated users
+  before_action :require_login, only: [:destroy]
+
   def index
     @tags = Tag.all
   end

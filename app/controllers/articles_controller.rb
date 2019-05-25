@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
+  # Allow unauthenticated users for
+  # new, create, edit, update, destroy
+  before_action :require_login, except: %i[index show]
+
   include ArticlesHelper
   def index
     @articles = Article.all
