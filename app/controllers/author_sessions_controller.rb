@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AuthorSessionsController < ApplicationController
+  # Turn off CSRF
+  skip_before_action :verify_authenticity_token
   def new; end
 
   def create
